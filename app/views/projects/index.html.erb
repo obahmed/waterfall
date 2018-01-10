@@ -1,0 +1,33 @@
+<h1>Home | Projects</h1>
+ 
+<table class="responsive-table">
+  <thead>
+  <tr>
+    <th>Project</th>
+    <th>Location</th>
+	<th>Total Installed Capacity (MW)</th>
+	<th>Configuration</th>
+	<th>Current Month Gross Generation (LUs) </th>
+	<th>Current Month Auxillary (LUs)</th>
+	<th>Current Month Net Generation (LUs)</th>
+	<th>Current Month Outage (Total Hours)</th>
+	<th>Link</th>
+  </tr>
+ </thead>
+  <tbody>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= project.location_text %></td>
+	  <td><%= project.total_installed_capacity %></td>
+	  <td><%= project.configuration %></td>
+	  <td><%= project.current_month_generation %></td>
+	  <td><%= project.current_month_auxillary %></td>
+	  <td><%= project.current_month_generation - project.current_month_auxillary %></td>
+	  <td><%= project.current_month_outages %></td>
+	  <td><%= link_to 'Show', project_path(project) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<p><%= link_to 'Add New Project', new_project_path %></p>

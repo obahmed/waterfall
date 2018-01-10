@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Waterfall</title>
+    <%= csrf_meta_tags %>
+	
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+   
+  <body>
+	
+	<div class='top_bar'><div class='logo'><%= image_tag "/assets/logo-jkpdc.png" %></div>Powerhouse - Plant data logging<br/><span class="small_text">Webportal for outage and generation logging.</span></div>
+	<hr/>
+	<div class='nav'><%= render 'devise/menu/login_items' %></div>
+	<div class = 'container'>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield %>
+	</div>
+	<div class='footer'>
+		<div class='footer_contents fl_right'>Copyright JKSPDCL</div>
+		<div class='footer_contents fl_left'>For internal reporting only.
+		<br/>To get access, contact: it_mgmt@jkspdcl.com
+		</div>
+		
+		
+	</div>
+   </body>
+  
+  
+</html>

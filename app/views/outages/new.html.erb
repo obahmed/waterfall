@@ -1,0 +1,41 @@
+<h1>Add new outages</h1>
+<%= form_for ([@project,@machine,@outage]) do |form| %>
+
+
+  <p><h2> Adding Outage for <%= @project.name =%>, <%= @machine.name =%></h2></p>
+  <p>
+    <%= form.label :outage_start_dt, 'Outage Start Date:' %>
+	<%= form.date_select :outage_start_dt %><br>
+	<%= form.label :outage_start_dt, 'Outage Start Time:' %>
+	<%= form.time_select :outage_start_dt, :ignore_date => true %>
+  </p>
+  <hr/>
+  <p>
+    <%= form.label :outage_end_dt, 'Outage End Date:' %>
+	<%= form.date_select :outage_end_dt %><br>
+	<%= form.label :outage_end_dt, 'Outage End Time:' %>
+	<%= form.time_select :outage_end_dt, :ignore_date => true %>
+  </p>
+  
+  <p>
+    <%= form.label :outage_type, 'Outage Type' %><br>
+    <%= form.select :outage_type, Outage::OUTAGE_TYPES %>
+  </p>
+  
+  <p>
+    <%= form.label :outage_reason, 'Reason for Outage' %><br>
+    <%= form.select :outage_reason, Outage::OUTAGE_REASONS %>
+  </p>
+  
+ 
+  <p>
+    <%= form.label :outage_comment, "Comments" %><br>
+    <%= form.text_area :outage_comment %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+	
+  </p>
+<% end %>
+<%= button_to "Cancel", @project, :method => :get %>

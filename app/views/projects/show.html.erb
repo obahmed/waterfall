@@ -1,0 +1,46 @@
+<h1>Project Details | <%= @project.name %> </h1>
+<div class='project_info'>
+ 
+<p>
+  <strong>Location:</strong>
+  <%= @project.location_text %>
+</p>
+
+<p>
+  <strong>Total Installed Capacity:</strong>
+  <%= @project.total_installed_capacity %>
+</p>
+
+<p>
+  <strong>Configuration:</strong>
+  <%= @project.configuration %>
+</p>
+</div>
+<table class='responstable'>
+<thead>
+		<tr>
+			<th>Machine</th>
+			<th>Capacity</th>
+			<th>Type</th>
+			<th colspan=3>Actions</th>
+		</tr>
+	</thead>
+<% @machines.each do |project_machine| %>
+	<tbody>
+		<tr>
+		   <td><%= project_machine.name %></td>
+		  <td><%= project_machine.generator_capacity %></td>
+		  <td><%= project_machine.generator_type %></td>
+		  <td><%= link_to 'Add Daily Generation', new_project_machine_generation_path(@project,project_machine) %></p>
+		  <td><%= link_to 'Add Outage', new_project_machine_outage_path(@project,project_machine) %></p>
+		  <td><%= link_to 'Current Month Generation', current_month_generations_project_machine_path(@project,project_machine) %></p>
+		</tr>
+	<tbody>
+<% end %>
+</table>
+<div class='bottom_links'>
+<ul>
+<li><%= link_to 'Add Machine', new_project_machine_path(@project) %></li>
+<li><%= link_to 'Go to Projects', projects_path %></li>
+<ul>
+</div>

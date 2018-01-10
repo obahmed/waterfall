@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bhep:
+  name: Baglihar-I
+  num_engines: 3
+  total_installed_capacity: 900
+  location_text: Chanderkote
+  configuration: 3X150
+
+ljhp:
+  name: LJHP
+  num_engines: 3
+  total_installed_capacity: 105
+  location_text: Baramulla
+  configuration: 3x35

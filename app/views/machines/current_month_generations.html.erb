@@ -1,0 +1,40 @@
+<h1>Current Month Daily Generation <%= @project.name %></h1>
+<p>This month generation: <%= @machine.name %></p>
+<table class='responstable'>
+	<thead>
+			<tr>
+				<th>Generation Date</th>
+				<th>Gross Units Generated (LUs)</th>
+				<th>Auxillary Units (LUs)</th>
+				<th>Net Units Generated (LUs)</th>
+				<th>Outage (Hours)</th>
+				<th>Comments</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+	<% @machine_current_month_generations.each do |day_machine_generation| %>
+		<tbody>
+			<tr>
+			   <td><%= day_machine_generation.generation_date.strftime('%d/%m/%Y') %></td>
+			  <td><%= day_machine_generation.units_generated %></td>
+			  <td><%= day_machine_generation.aux_units_generated %></td>
+			  <td><%= day_machine_generation.units_generated - day_machine_generation.aux_units_generated %></td>
+			  <td><%= day_machine_generation.hours_outage %></td>
+			  <td><%= day_machine_generation.comment %></td>
+			  <td><%= link_to 'Edit',[:edit, @project, @machine, day_machine_generation] %></td>
+			</tr>
+		
+	<% end %>
+	<tr>
+			  <td>TOTAL</td>
+			  <td><%= @total_machine_current_month_generation %></td>
+			  <td><%= @total_machine_current_month_aux_units %></td>
+			  <td><%= @total_machine_current_month_net_generation %></td>
+			  <td><%= @total_machine_current_month_outage %></td>
+			  <td></td>
+	</tr>
+	<tbody>
+</table>
+<p><%= link_to 'Back to Project', project_path(@project) %></p>
+<p><%= link_to 'All Projects', projects_path %></p>
+

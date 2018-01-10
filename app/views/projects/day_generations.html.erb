@@ -1,0 +1,28 @@
+<h1>Daily Generation <%= @project.name %> for <%= Date.strptime(@search_date, '%d%m%Y').strftime("%d/%m/%Y") %></h1>
+<table class='responstable'>
+	<thead>
+			<tr>
+				<th>Machine</th>
+				<th>Units Generated (LUs)</th>
+				<th>Outage (Hours)</th>
+					
+			</tr>
+		</thead>
+	<% @project_day_generations.each do |day_generation| %>
+		<tbody>
+			<tr>
+			   <td><%= day_generation.name %></td>
+			  <td><%= day_generation.units_generated %></td>
+			  <td><%= day_generation.hours_outage %></td>
+			</tr>
+		
+	<% end %>
+	<tr>
+			  <td>TOTAL:</td>
+			  <td><%= @total_project_day_generation %></td>
+			   <td><%= @total_project_day_outage %></td>
+	</tr>
+	<tbody>
+</table>
+<p><%= link_to 'Back to Project', project_path(@project) %></p>
+<p><%= link_to 'All Projects', projects_path %></p>

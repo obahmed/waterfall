@@ -1,0 +1,33 @@
+<h1>Current Month Daily Generation <%= @project.name %></h1>
+<table class='responstable'>
+	<thead>
+			<tr>
+				<th>Generation Date</th>
+				<th>Gross Units Generated (LUs)</th>
+				<th>Auxillary Units (LUs)</th>
+				<th>Net Units Generated (LUs)</th>
+				<th>Outage (Hours)</th>
+					
+			</tr>
+		</thead>
+	<% @project_current_month_generations.each do |day_generation| %>
+		<tbody>
+			<tr>
+			   <td><%= day_generation.generation_date.strftime('%d/%m/%Y') %></td>
+			  <td><%= day_generation.total_units_generated %></td>
+			  <td><%= day_generation.total_auxillary_units %></td>
+			  <td><%= day_generation.total_units_generated - day_generation.total_auxillary_units %></td>
+			  <td><%= day_generation.total_hours_outage %></td>
+			</tr>
+		
+	<% end %>
+	<tr>
+			  <td>TOTAL:</td>
+			  <td><%= @total_project_current_month_generation %></td>
+			  <td><%= @total_project_current_month_aux_units %></td>
+			  <td><%= @total_project_current_month_net_generation %></td>
+			  <td><%= @total_project_current_month_outage %></td>
+	</tr>
+	<tbody>
+</table>
+<p><%= link_to 'All Projects', projects_path %></p>

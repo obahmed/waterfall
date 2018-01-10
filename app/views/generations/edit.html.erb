@@ -1,0 +1,49 @@
+<h1>Generations</h1>
+<script type="text/javascript">
+function calculate_net_units ()
+	{
+		var p;
+		var gross_unit_generated;
+		var n;
+		var auxillary_units;
+		p = $("#generation_units_generated");    // jQuery selector (updated)
+		gross_unit_generated = p.val(); // this is the jQuery way to get an input's value
+		n = $("#generation_aux_units_generated");
+		auxillary_units = n.val(); // this works with select tags too
+		$("#net_gen").html(gross_unit_generated - auxillary_units); // jQuery way to set the HTML of an element
+}
+</script>
+<%= form_for ([@project,@machine,@generation]) do |form| %>
+
+
+  <p> Adding Daily Generation for <%= @project.name =%>, <%= @machine.name =%></p>
+  <p>
+    <%= form.label :units_generated, 'Gross Units - LUs' %><br>
+    <%= form.text_field :units_generated, onblur:"calculate_net_units();" %>
+  </p>
+  
+   <p>
+    <%= form.label :aux_units_generated, "Auxillary Units - LUs" %><br>
+    <%= form.text_field :aux_units_generated, onblur:"calculate_net_units();" %>
+  </p>
+  
+  <p>
+    Net Generation - LUs : <span id='net_gen'><script>calculate_net_units();</script></span>
+  </p>
+  
+  
+  <p>
+    <%= form.label 'generation_date', "Generation Date" %><br>
+    <%= form.text_field :generation_date, :id=>"generation_date" %>
+  </p>
+  
+  <p>
+    <%= form.label 'comment', "Comments/Remarks" %><br>
+    <%= form.text_area :comment %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+<%= button_to "Cancel", @project, :method => :get %>

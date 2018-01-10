@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require jquery-ui/datepicker
+ *= require_tree .
+ *= require_self
+ */
+ 
+ 
+body {
+	font-family: Calibri;
+}
+ 
+ a {
+	text-decoration: none;
+	color: #0E6655;
+ } 
+ 
+
+
+ .user_identification {
+	font-size: 0.8em;
+	color: #0E6655;
+	float: right;
+	list-style-type: none;
+ }
+ .user_identification  li a {
+	text-decoration: none;
+	color: #0E6655;
+	
+ }
+ .body {
+	height: 100%;
+ }
+ .notice {
+	color: green;
+	font-size: 0.85em;
+ }
+ 
+ .alert {
+	color: red;
+	font-size: 0.85em;
+ }
+ .top_bar {
+	background-color:#167F92;
+	height: 75px;
+	width: 100%;
+    overflow:hidden;
+	top: 0;
+	left: 0;
+	color: white;
+	font-size: 2em;
+	padding-left: 5px;
+	display:block;
+	text-align: left;
+	vertical-align:middle;
+ }
+.top_bar .small_text {
+	font-size: 0.7em;
+	font-style: italic;
+}
+ .logo {
+	float:left;
+	margin-right: 15px;
+ }
+ 
+ .bottom_links ul {
+	list-style: none;
+ }
+ 
+.footer {
+
+    height:40px; 
+    width: 100%;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+	background-color:#167F92;
+
+}   
+
+.footer_contents {
+
+    height:20px; 
+    margin:auto;
+	
+	padding-top: 3px;
+	color: white;
+
+
+}
+
+.footer .fl_right {
+		float:right;
+		padding-right: 10px;
+}
+
+.footer .fl_left {
+		float:left;
+		padding-left: 10px;
+}
+
+textarea {
+  width: 300px;
+  height: 100px;
+}

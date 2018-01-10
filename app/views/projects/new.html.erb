@@ -1,0 +1,31 @@
+<h1>New Project</h1>
+<%= form_for @project do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label 'No of Engines' %><br>
+    <%= form.text_field :num_engines %>
+  </p>
+  
+  <p>
+    <%= form.label :total_installed_capacity %><br>
+    <%= form.text_field :total_installed_capacity %>
+  </p>
+	
+  <p>
+    <%= form.label 'Location' %><br>
+    <%= form.text_field :location_text %>
+  </p>
+  
+  <p>
+    <%= form.label :configuration %><br>
+    <%= form.text_field :configuration %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

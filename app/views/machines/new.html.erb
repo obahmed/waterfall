@@ -1,0 +1,25 @@
+<h1>Add New Machine</h1>
+<%= form_for ([@project,@machine]) do |form| %>
+
+
+  <p> Adding New Machine for <%= @project.name =%></p>
+  <p>
+    <%= form.label 'Name' %><br>
+    <%= form.text_field :name %>
+  </p>
+  
+  <p>
+    <%= form.label :generator_capacity %><br>
+    <%= form.text_field :generator_capacity %>
+  </p>
+ 
+  <p>
+    <%= form.label 'generator_type' %><br>
+    <%= form.text_field :generator_type %>
+  </p>
+  
+
+  <p>
+    <%= form.submit "Add Machine" %>
+  </p>
+<% end %>
