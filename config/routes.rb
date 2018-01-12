@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources	:projects do
 		get 'current_month_generations', :on => :member
 		get 'day_generations', :on => :member
+		get 'get_ranged_generations_outages', :on => :member
 		resources	:machines do
 			get 'current_month_generations', :on => :member
 			resources	:outages

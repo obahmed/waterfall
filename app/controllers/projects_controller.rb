@@ -39,6 +39,19 @@ class ProjectsController < ApplicationController
 		@total_project_day_outage = @project_day_generations.sum(&:hours_outage)
 	end
 	
+	def get_ranged_generations_outages
+		@from_date = params['search_form'][:from_date]
+		@to_date = params['search_form'][:to_date]
+		@project = Project.find(params[:id])
+		@project_day_generations=@project.machines.joins(:generations).where("generations.generation_date between ? and ?",Date.parse(@from_date),Date.parse(@to_date)).select(["generations.generation_date","generations.units_generated"]).group(:generation_date).sum(:units_generated)
+		@project_day_aux_generations=@project.machines.joins(:generations).where("generations.generation_date between ? and ?",Date.parse(@from_date),Date.parse(@to_date)).select(["generations.generation_date","generations.aux_units_generated"]).group(:generation_date).sum(:aux_units_generated)
+		@project_day_outages=@project.machines.joins(:outages).where("outages.outage_dt between ? and ?",Date.parse(@from_date),Date.parse(@to_date)).select(["generations.generation_date","generations.units_generated"]).group(:outage_dt).sum(:outage_total_hours)
+		@date_range = Date.parse(@from_date)..Date.parse(@to_date)
+		
+
+	end
+
+	
 	private
     def project_params
 		params.require(:project).permit(:name, :num_engines, :total_installed_capacity, :location_text, :configuration, :current_month_generation,:current_month_outages)

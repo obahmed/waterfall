@@ -1,0 +1,46 @@
+<h1>Data Search Results | <%= @project.name %></h1>
+<h4>From: <%= Date.parse(@from_date).strftime("%d-%m-%Y") %> <br/>To: <%= Date.parse(@to_date).strftime("%d-%m-%Y") %></h4>
+<hr/>
+<table class='responstable'>
+	<thead>
+			<tr>
+				<th>Date</th>
+				<th>Gross Units Generated (LUs)</th>
+				<th>Aux Units Generated (LUs)</th>
+				<th>Net Units Generated (LUs)</th>
+				<th>Outage (Hours)</th>
+					
+			</tr>
+		</thead>
+	<% @date_range.each do |c_date| %>
+		<tbody>
+			<tr>
+				<td><%= c_date.strftime("%d-%m-%Y") %></td>
+				<td><% if @project_day_generations.key?(c_date) %>
+						<%= @project_day_generations[c_date] %>
+						<% net_generation = @project_day_generations[c_date] %>
+					<% end %>
+				</td>
+				<td><% if @project_day_aux_generations.key?(c_date) %>
+						<%= @project_day_aux_generations[c_date] %>
+						<% net_generation = net_generation - @project_day_aux_generations[c_date] %>
+					<% end %>
+				</td>
+				<td>	
+					<% if net_generation %>
+					<%= net_generation %>
+					<% end %>
+				</td>
+				<td>
+					<% if @project_day_outages.key?(c_date) %>
+						<%= @project_day_outages[c_date] %>
+					<% end %>
+				</td>
+			</tr>
+		
+	<% end %>
+	<tr>
+	</tr>
+	<tbody>
+</table>
+<p><%= link_to 'All Projects', projects_path %></p>

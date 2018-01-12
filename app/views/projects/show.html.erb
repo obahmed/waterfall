@@ -16,6 +16,30 @@
   <%= @project.configuration %>
 </p>
 </div>
+<%= form_for :search_form, url: get_ranged_generations_outages_project_path(@project), method: :get do |form| %>
+<table class='responstable'>
+	<thead>
+		<tr>
+			<th colspan=3>Search for data</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<%= form.label :from_date, "Beginning date:" %>
+				<%= form.text_field :from_date, :id=> 'from_date' %>
+			</td>
+			<td>
+				<%= form.label :from_date, "End date:" %>
+				<%= form.text_field :to_date, :id=> 'to_date' %>
+			</td>
+			<td><%= form.submit "Search" %></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+
+
 <table class='responstable'>
 <thead>
 		<tr>
