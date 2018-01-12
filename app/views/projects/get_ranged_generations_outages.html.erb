@@ -1,5 +1,5 @@
 <h1>Data Search Results | <%= @project.name %></h1>
-<h4>From: <%= Date.parse(@from_date).strftime("%d-%m-%Y") %> <br/>To: <%= Date.parse(@to_date).strftime("%d-%m-%Y") %></h4>
+<h4>From: <%= Date.parse(@from_date).strftime("%d-%b-%Y") %> <br/>To: <%= Date.parse(@to_date).strftime("%d-%b-%Y") %></h4>
 <hr/>
 <table class='responstable'>
 	<thead>
@@ -15,7 +15,7 @@
 	<% @date_range.each do |c_date| %>
 		<tbody>
 			<tr>
-				<td><%= c_date.strftime("%d-%m-%Y") %></td>
+				<td><%= c_date.strftime("%d-%b-%Y") %></td>
 				<td><% if @project_day_generations.key?(c_date) %>
 						<%= @project_day_generations[c_date] %>
 						<% net_generation = @project_day_generations[c_date] %>
