@@ -1,0 +1,20 @@
+<h1>Edit Machine Status</h1>
+<h2>Status Change for Machine</h2>
+<%= form_for ([@project,@machine,@machine_status]) do |form| %>
+  <p><h3> Changing Status for <%= @project.name =%> - <%= @machine.name =%></h2></p>
+  <p>
+    <%= form.label :machine_status, 'Status:' %>
+	<%= form.select :machine_status, MachineStatus::MACHINE_STATUS_TYPES %>
+	
+  </p>
+  <hr/>
+  <p>
+    <%= form.label :machine_status_desc, 'Remarks Note:' %><br/>
+	<%= form.text_area :machine_status_desc %>
+  </p>
+  <p>
+    <%= form.submit %>
+	
+  </p>
+<% end %>
+<%= button_to "Cancel", @project, :method => :get %>

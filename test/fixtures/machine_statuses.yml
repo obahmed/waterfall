@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  machine_id: 1
+  machine_status: MyString
+  machine_status_desc: MyString
+  is_current: MyString
+  machine_status_start_dt: 2018-01-18 11:36:00
+  machine_status_end_dt: 2018-01-18 11:36:00
+  machine_status_user: 
+
+two:
+  machine_id: 1
+  machine_status: MyString
+  machine_status_desc: MyString
+  is_current: MyString
+  machine_status_start_dt: 2018-01-18 11:36:00
+  machine_status_end_dt: 2018-01-18 11:36:00
+  machine_status_user: 

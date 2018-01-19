@@ -46,6 +46,7 @@
 			<th>Machine</th>
 			<th>Capacity</th>
 			<th>Type</th>
+			<th>Status</th>
 			<th colspan=3>Actions</th>
 		</tr>
 	</thead>
@@ -55,6 +56,17 @@
 		   <td><%= project_machine.name %></td>
 		  <td><%= project_machine.generator_capacity %></td>
 		  <td><%= project_machine.generator_type %></td>
+		  <td>
+			<% if project_machine.machine_status == 'Operational' %>
+				<%= image_tag "/assets/green_status_small.png" %>
+			<% elsif project_machine.machine_status == 'Shutdown'  %>
+				<%= image_tag "/assets/red_status_small.png" %>
+			<% else %>
+				<%= image_tag "/assets/unknown_status_small.png" %>
+			<% end %>
+	
+			<%= project_machine.machine_status %><br/><%= link_to '(Edit)', new_project_machine_machine_status_path(@project,project_machine), class: 'classic_url' %>
+		  </td>
 		  <td><%= link_to 'Add Daily Generation', new_project_machine_generation_path(@project,project_machine) %></p>
 		  <td><%= link_to 'Add Outage', new_project_machine_outage_path(@project,project_machine) %></p>
 		  <td><%= link_to 'Current Month Generation', current_month_generations_project_machine_path(@project,project_machine) %></p>

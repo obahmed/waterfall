@@ -2,6 +2,7 @@ class Machine < ApplicationRecord
   belongs_to :project
   has_many	:generations
   has_many	:outages
+  has_many	:machine_statuses
   validates	:generator_capacity, presence: true
   
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122055624) do
+ActiveRecord::Schema.define(version: 20180118061433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20171122055624) do
     t.index ["machine_id"], name: "index_generations_on_machine_id", using: :btree
   end
 
+  create_table "machine_statuses", force: :cascade do |t|
+    t.integer  "machine_id"
+    t.string   "machine_status"
+    t.string   "machine_status_desc"
+    t.string   "is_current"
+    t.datetime "machine_status_start_dt"
+    t.datetime "machine_status_end_dt"
+    t.integer  "machine_status_user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "machines", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "generator_capacity"
@@ -34,6 +46,7 @@ ActiveRecord::Schema.define(version: 20171122055624) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "name"
+    t.string   "machine_status"
     t.index ["project_id"], name: "index_machines_on_project_id", using: :btree
   end
 
