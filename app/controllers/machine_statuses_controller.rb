@@ -23,7 +23,6 @@ class MachineStatusesController < ApplicationController
 			if @previous_status.save
 					if @machine_status.save
 						flash[:notice]="Changed status of machine."
-						@machine.machine_status = @machine.machine_status
 						@machine.save
 						redirect_to @project
 					else
@@ -39,10 +38,13 @@ class MachineStatusesController < ApplicationController
 		end
 	else
 		@machine.machine_status = @machine_status.machine_status
-		flash[:notice]="Changed status of machine."
-		@machine.machine_status = @machine.machine_status
-		@machine.save
-		redirect_to @project
+		if @machine_status.save
+			flash[:notice]="Changed status of machine."
+			@machine.save
+			redirect_to @project
+		else
+						
+		end
 	end
 	
 	
