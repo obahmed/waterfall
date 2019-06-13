@@ -12,7 +12,7 @@
   <body>
 	
 	<div class='top_bar'><div class='logo'><%= image_tag "/assets/logo-jkpdc.png" %></div>Powerhouse - Plant data logging<br/><span class="small_text">Webportal for outage and generation logging.</span></div>
-	<div><h3><%= ENV['RAILS_ENV'] %></h3></div>
+	<div class="small_text">Environment: <%= ENV['RAILS_ENV'] %></div>
 	<hr/>
 	<div class='nav'><%= render 'devise/menu/login_items' %></div>
 	<div class = 'container'>
