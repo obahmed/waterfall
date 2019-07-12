@@ -25,7 +25,7 @@ function calculate_net_units ()
   
    <p>
     <%= form.label :aux_units_generated, "Auxillary Units - LUs" %><br>
-    <%= form.text_field :aux_units_generated, onblur:"calculate_net_units();" %>
+    <%= form.text_field :aux_units_generated, :value => 0.0 onblur:"calculate_net_units();" %>
   </p>
   
   <p>
