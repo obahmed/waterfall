@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 	end
 	
 	def index
-		@projects = Project.all
+		@projects = Project.all.sort_by &:name
 	end
 	
 	def current_month_generations
