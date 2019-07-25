@@ -40,7 +40,9 @@ class OutagesController < ApplicationController
   end
 
   def index
+	
   end
+  
   
   private
    def check_project_accessible

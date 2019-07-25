@@ -53,7 +53,7 @@
 <% @machines.each do |project_machine| %>
 	<tbody>
 		<tr>
-		   <td><%= project_machine.name %></td>
+		   <td><%= link_to project_machine.name,  project_machine_path(@project, project_machine) %></td>
 		  <td><%= project_machine.generator_capacity %></td>
 		  <td><%= project_machine.generator_type %></td>
 		  <td>

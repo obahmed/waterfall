@@ -1,0 +1,43 @@
+<h1>Outages List For The Day</h1>
+<h2>Project: | <%= @project.name %> </h2>
+<h3>Machine: | <%= @machine.name %> </h2>
+<div class='project_info'>
+
+<table class='responstable'>
+<thead>
+		<tr>
+			<th>Day</th>
+			<th>Outage Id</th>
+			<th>Type</th>
+			<th>Outage Reason</th>
+			<th>Outage Start</th>
+			<th>Outage End</th>
+			<th>Outage Hours</th>
+			<th>Outage Remarks</th>
+			<th colspan='2'>Actions</th>
+		</tr>
+	</thead>
+<% @outages.each do |outage| %>
+	<tbody>
+		<tr>
+		   <td><%= outage.outage_dt.strftime("%d-%b-%Y") %></td>
+		  <td><%= outage.id %></td>
+		  <td><%= outage.outage_type %></td>
+		  <td><%= outage.outage_reason %></td>
+		  <td><%= outage.outage_start_dt.strftime("%d-%b-%Y %T") %></td>
+		  <td><%= outage.outage_end_dt.strftime("%d-%b-%Y %T") %></td>
+		  <td><%= outage.outage_total_hours %></td>
+		  <td><%= outage.outage_comment%></td>
+		  <td><%= link_to 'Edit Outage', projects_path %></p>
+		  <td><%= link_to 'Delete Outage', projects_path %></p>
+		  
+		</tr>
+	<tbody>
+<% end %>
+</table>
+<div class='bottom_links'>
+<ul>
+<li><%= link_to 'Add Machine', new_project_machine_path(@project) %></li>
+<li><%= link_to 'Go to Projects', projects_path %></li>
+<ul>
+</div>

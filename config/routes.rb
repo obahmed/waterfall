@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 		get 'get_ranged_generations_outages', :on => :member
 		resources	:machines do
 			get 'current_month_generations', :on => :member
-			resources	:outages
+			get 'get_ranged_generations_outages', :on => :member
+			get 'get_day_list_outages', :on => :member
+			resources	:outages				
 			resources	:generations
 			resources	:machine_statuses
 		end
