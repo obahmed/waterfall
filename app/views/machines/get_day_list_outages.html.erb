@@ -14,7 +14,7 @@
 			<th>Outage End</th>
 			<th>Outage Hours</th>
 			<th>Outage Remarks</th>
-			<th colspan='2'>Actions</th>
+			<th colspan='1'>Actions</th>
 		</tr>
 	</thead>
 <% @outages.each do |outage| %>
@@ -28,7 +28,6 @@
 		  <td><%= outage.outage_end_dt.strftime("%d-%b-%Y %T") %></td>
 		  <td><%= outage.outage_total_hours %></td>
 		  <td><%= outage.outage_comment%></td>
-		  <td><%= link_to 'Edit Outage', projects_path %></p>
 		  <td><%= button_to 'Delete Outage', project_machine_outage_path(@project, @machine, outage), method: :delete,  data: { confirm: 'Are you sure?' } %></p>
 		  
 		</tr>
