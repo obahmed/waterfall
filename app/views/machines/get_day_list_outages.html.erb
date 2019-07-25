@@ -29,7 +29,7 @@
 		  <td><%= outage.outage_total_hours %></td>
 		  <td><%= outage.outage_comment%></td>
 		  <td><%= link_to 'Edit Outage', projects_path %></p>
-		  <td><%= link_to 'Delete Outage', projects_path %></p>
+		  <td><%= button_to 'Delete Outage', project_machine_outage_path(@project, @machine, outage), method: :delete,  data: { confirm: 'Are you sure?' } %></p>
 		  
 		</tr>
 	<tbody>

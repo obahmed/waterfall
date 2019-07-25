@@ -1,5 +1,5 @@
 class OutagesController < ApplicationController
-  before_action	:check_project_accessible, only: [:new, :create, :edit, :update]
+  before_action	:check_project_accessible, only: [:new, :create, :edit, :update, :destroy]
   def new
 	@project = Project.find(params[:project_id])
 	@machine = @project.machines.find(params[:machine_id])
@@ -41,6 +41,19 @@ class OutagesController < ApplicationController
 
   def index
 	
+  end
+  def destroy
+	
+		@project = Project.find(params[:project_id])
+		@machine = @project.machines.find(params[:machine_id])
+		@outage = Outage.find(params[:id])
+		if (@outage.outage_dt > 1.month.ago) || (current_user.is_admin?)
+			@outage.destroy
+			flash[:notice]="You have deleted the outage for the day with id:" << params[:id].to_s
+		else
+			flash[:alert]="You cannot delete outages older than a month ago."
+		end
+		redirect_to project_machine_path(@project,@machine)
   end
   
   

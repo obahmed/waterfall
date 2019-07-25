@@ -31,6 +31,7 @@ class MachinesController < ApplicationController
 	@machine_current_month_generations = @machine.current_month_generations
 	@total_machine_current_month_generation = @machine_current_month_generations.sum(&:units_generated)
 	#@total_machine_current_month_outage = @machine_current_month_generations.sum(&:hours_outage)
+	@total_machine_current_month_outage = @machine.current_month_outages.sum(&:outage_total_hours)
 	@total_machine_current_month_aux_units = @machine_current_month_generations.sum(&:aux_units_generated)
 	@total_machine_current_month_net_generation = @total_machine_current_month_generation - @total_machine_current_month_aux_units
 	
